@@ -1,0 +1,22 @@
+//
+//  ShadowPath-PrefixHeader.pch
+//  ShadowPath
+//
+//  Created by dev on 16/7/19.
+//  Copyright © 2016年 TouchingApp. All rights reserved.
+//
+
+#ifndef ShadowPath_PrefixHeader_pch
+#define ShadowPath_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+//#include "obfs.h"
+//#include <stdlib.h>
+#include "encrypt.h"
+#include "obfs.h"
+#include <stdlib.h>
+#include "obfsutil.h"
+#include "mycrc32.h"
+#define OBFS_HMAC_SHA1_LEN 10
+#endif /* ShadowPath_PrefixHeader_pch */
