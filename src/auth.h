@@ -23,6 +23,19 @@
 #ifndef _AUTH_H
 #define _AUTH_H
 
+
+typedef struct auth_simple_global_data {
+  uint8_t local_client_id[8];
+  uint32_t connection_id;
+}auth_simple_global_data;
+
+typedef struct auth_simple_local_data {
+  int has_sent_header;
+  char * recv_buffer;
+  int recv_buffer_size;
+}auth_simple_local_data;
+
+
 void * auth_simple_init_data();
 obfs * auth_simple_new_obfs();
 void auth_simple_dispose(obfs *self);
@@ -33,5 +46,8 @@ int auth_simple_client_post_decrypt(obfs *self, char **pplaindata, int datalengt
 
 int auth_sha1_client_pre_encrypt(obfs *self, char **pplaindata, int datalength, size_t* capacity);
 int auth_sha1_client_post_decrypt(obfs *self, char **pplaindata, int datalength, size_t* capacity);
+
+int auth_sha1_v2_client_pre_encrypt(obfs *self, char **pplaindata, int datalength, size_t* capacity);
+int auth_sha1_v2_client_post_decrypt(obfs *self, char **pplaindata, int datalength, size_t* capacity);
 
 #endif // _AUTH_H

@@ -1,25 +1,17 @@
 
 #include "http_simple.h"
 
-typedef struct http_simple_local_data {
-    int has_sent_header;
-    int has_recv_header;
-    char *encode_buffer;
-}http_simple_local_data;
-
 void http_simple_local_data_init(http_simple_local_data* local) {
-    local->has_sent_header = 0;
-    local->has_recv_header = 0;
-    local->encode_buffer = NULL;
+  local->has_sent_header = 0;
+  local->has_recv_header = 0;
+  local->encode_buffer = NULL;
 }
-
 obfs * http_simple_new_obfs() {
-    obfs * self = new_obfs();
-    self->l_data = malloc(sizeof(http_simple_local_data));
-    http_simple_local_data_init((http_simple_local_data*)self->l_data);
-    return self;
+  obfs * self = new_obfs();
+  self->l_data = malloc(sizeof(http_simple_local_data));
+  http_simple_local_data_init((http_simple_local_data*)self->l_data);
+  return self;
 }
-
 void http_simple_dispose(obfs *self) {
     http_simple_local_data *local = (http_simple_local_data*)self->l_data;
     if (local->encode_buffer != NULL) {

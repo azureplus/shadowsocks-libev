@@ -26,6 +26,16 @@
 obfs * http_simple_new_obfs();
 void http_simple_dispose(obfs *self);
 
+
+typedef struct http_simple_local_data {
+  int has_sent_header;
+  int has_recv_header;
+  char *encode_buffer;
+}http_simple_local_data;
+
+void http_simple_local_data_init(http_simple_local_data* local);
+obfs * http_simple_new_obfs() ;
+void http_simple_encode_head(http_simple_local_data *local, char *data, int datalength) ;
 int http_simple_client_encode(obfs *self, char **pencryptdata, int datalength, size_t* capacity);
 int http_simple_client_decode(obfs *self, char **pencryptdata, int datalength, size_t* capacity, int *needsendback);
 

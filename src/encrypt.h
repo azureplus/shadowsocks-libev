@@ -170,7 +170,7 @@ typedef struct enc_ctx {
     uint64_t counter;
     cipher_ctx_t evp;
 } enc_ctx_t;
-
+int rand_bytes(uint8_t *output, int len);
 int ss_encrypt_all(buffer_t *plaintext, int method, int auth, size_t capacity);
 int ss_decrypt_all(buffer_t *ciphertext, int method, int auth, size_t capacity);
 int ss_encrypt(buffer_t *plaintext, enc_ctx_t *ctx, size_t capacity);

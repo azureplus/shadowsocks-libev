@@ -16,7 +16,7 @@ void init_crc32_table(void) {
     }
 }
 
-uint32_t crc32(unsigned char *buffer, unsigned int size) {
+uint32_t mycrc32(unsigned char *buffer, unsigned int size) {
     uint32_t crc = 0xFFFFFFFF;
     unsigned int i;
     for (i = 0; i < size; i++) {

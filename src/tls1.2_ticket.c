@@ -1,18 +1,6 @@
 
 #include "tls1.2_ticket.h"
 
-typedef struct tls12_ticket_auth_global_data {
-    uint8_t local_client_id[32];
-}tls12_ticket_auth_global_data;
-
-typedef struct tls12_ticket_auth_local_data {
-    int handshake_status;
-    char *send_buffer;
-    int send_buffer_size;
-    char *recv_buffer;
-    int recv_buffer_size;
-}tls12_ticket_auth_local_data;
-
 void tls12_ticket_auth_local_data_init(tls12_ticket_auth_local_data* local) {
     local->handshake_status = 0;
     local->send_buffer = malloc(0);

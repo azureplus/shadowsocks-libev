@@ -88,7 +88,7 @@ ev_tstamp last = 0;
 char *prefix;
 #endif
 
-#include "obfs.c" // I don't want to modify makefile
+#include "obfs.h" // I don't want to modify makefile
 
 static int acl = 0;
 static int mode = TCP_ONLY;

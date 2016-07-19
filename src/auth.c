@@ -3,17 +3,6 @@
 
 static int auth_simple_pack_unit_size = 2000;
 
-typedef struct auth_simple_global_data {
-    uint8_t local_client_id[8];
-    uint32_t connection_id;
-}auth_simple_global_data;
-
-typedef struct auth_simple_local_data {
-    int has_sent_header;
-    char * recv_buffer;
-    int recv_buffer_size;
-}auth_simple_local_data;
-
 void auth_simple_local_data_init(auth_simple_local_data* local) {
     local->has_sent_header = 0;
     local->recv_buffer = (char*)malloc(16384);
@@ -144,7 +133,7 @@ int auth_simple_client_post_decrypt(obfs *self, char **pplaindata, int datalengt
         if (length > local->recv_buffer_size)
             break;
 
-        int crc = crc32((unsigned char*)recv_buffer, length);
+        int crc = mycrc32((unsigned char*)recv_buffer, length);
         if (crc != -1) {
             free(out_buffer);
             local->recv_buffer_size = 0;

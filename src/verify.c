@@ -91,7 +91,7 @@ int verify_simple_client_post_decrypt(obfs *self, char **pplaindata, int datalen
         if (length > local->recv_buffer_size)
             break;
 
-        int crc = crc32((unsigned char*)recv_buffer, length);
+        int crc = mycrc32((unsigned char*)recv_buffer, length);
         if (crc != -1) {
             free(out_buffer);
             local->recv_buffer_size = 0;
